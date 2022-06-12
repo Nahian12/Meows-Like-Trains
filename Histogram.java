@@ -2,11 +2,11 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.*;
 import java.util.ArrayList;
-public class New {
+public class Histogram {
 
         public static void main(String[] args)  throws FileNotFoundException, IOException{
 
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Admin\\Desktop\\DS-Assessment-proj2-main\\tasks\\histogram\\cases\\0.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("0.txt"));
             String text = reader.readLine();
 
             String parts[] = text.split(" ");
