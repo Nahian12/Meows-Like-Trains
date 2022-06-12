@@ -74,7 +74,7 @@ public class Histogram {
 
 
 
-                System.out.println("ANS: ");
+                
                 for(int i  = 0 ; i <= intervals ; i++){
                     System.out.print(cutoffs.get(i) + " ");
 
