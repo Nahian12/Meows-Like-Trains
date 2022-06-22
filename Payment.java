@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.PriorityQueue;
 
-class ClearingHouse implements Comparable<ClearingHouse> {
+class TransactionTicket implements Comparable<TransactionTicket> {
 
     /* Initialize the main components of the transaction. (Time, Ticket ID, and Tier)
      * Use Long object and not primitive type (long) in order to access the compareTo method
@@ -12,7 +12,7 @@ class ClearingHouse implements Comparable<ClearingHouse> {
     Long startingTime;
     long Time;
 
-    public ClearingHouse(long Time, String txn_id, String transactionTier) {
+    public TransactionTicket(long Time, String txn_id, String transactionTier) {
         this.Time = Time;
         this.txn_id = txn_id;
         this.transactionTier = transactionTier;
@@ -55,7 +55,7 @@ class ClearingHouse implements Comparable<ClearingHouse> {
      And if the value equals to 1 it returns the value of whichever transaction ticket is priority.
      */
     @Override
-    public int compareTo(ClearingHouse o) {
+    public int compareTo(TransactionTicket o) {
         if(this.getStartingTime().compareTo(o.getStartingTime()) == 0) {
             return this.getTime().compareTo(o.getTime());
         }
@@ -69,7 +69,7 @@ class ClearingHouse implements Comparable<ClearingHouse> {
 public class Payment {
     public static void main(String[] args) {
 
-        PriorityQueue<ClearingHouse> transactionQueue = new PriorityQueue<>();
+        PriorityQueue<TransactionTicket> transactionQueue = new PriorityQueue<>();
         String[] transactionDetails;
         long time, time1, time2;
         String txn_id, tier, nextTransaction;
@@ -90,12 +90,12 @@ public class Payment {
             time = Long.parseLong(transactionDetails[0]);
             txn_id = transactionDetails[1];
             tier = transactionDetails[2];
-            ClearingHouse foo = new ClearingHouse(time, txn_id, tier);
+            TransactionTicket foo = new TransactionTicket(time, txn_id, tier);
             if (transactionQueue.peek() != null && d3 < d1) {
                 time1 = transactionQueue.peek().getTime();
                 d1 = Math.toIntExact(time1 % 10000 / 1000);
             }
-            transactionQueue.offer(new ClearingHouse(time, txn_id, tier));
+            transactionQueue.offer(new TransactionTicket(time, txn_id, tier));
             time2 = foo.getTime();
             if(time2 % 1000 == 0){
                 d2 = d1;
@@ -113,14 +113,14 @@ public class Payment {
                 int size = transactionQueue.size();
                 if (size < 100){
                     while(!transactionQueue.isEmpty()){
-                        ClearingHouse x = transactionQueue.poll();
+                        TransactionTicket x = transactionQueue.poll();
                         answer = answer + x;
                     }
                 }
                 else {
                     for (int i = 0; i < 100; i++) {
                         if (!transactionQueue.isEmpty()) {
-                            ClearingHouse x = transactionQueue.poll();
+                            TransactionTicket x = transactionQueue.poll();
                             answer = answer + x;
                         }
                     }
